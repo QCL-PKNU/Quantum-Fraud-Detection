@@ -41,10 +41,6 @@ def train_per_epoch(qnode: qml.qnode, weights: np.tensor, loss_function, opt, ba
 
     return weights
 
-
-
-
-
 def calculate_metrics(y_test, y_hat_test):
         conf_matrix = confusion_matrix(y_test, y_hat_test)
         TN, FP, FN, TP = conf_matrix.ravel()

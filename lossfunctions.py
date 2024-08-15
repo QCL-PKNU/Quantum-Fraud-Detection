@@ -53,6 +53,7 @@ def accuracy_loss(y_real: np.array, y_pred: np.array, threshold: float = 0.5) ->
 
 def bin_loss(y_real: np.array, y_pred: np.array, eps: float = 1e-8) -> float:
 
-    assert len(y_real) == len(y_pred)
+    if len(y_real) != len(y_pred):
+        raise ValueError("The length of y_real and y_pred must be the same.")
     loss = -np.mean([y1 * np.log(y2 + eps) + (1 - y1) * np.log(1 - y2 + eps) for y1, y2 in zip(y_real, y_pred)])
     return loss
